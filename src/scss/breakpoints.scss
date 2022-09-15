@@ -1,0 +1,37 @@
+
+/// 
+/// Hardcoded value used by media wrapper mixins.
+/// 
+$breakpoint-desktop: 1000px;
+
+///
+/// Media wrapper. Scope for mobile theming.
+/// Dependant on a hardcoded breakpoint.
+/// 
+/// @example scss
+///     @include breakpoint.mobile {
+///         background-color: yellow;
+///         }
+/// 
+/// @see {mixin} desktop
+/// 
+@mixin mobile {
+    @media only screen and (max-width: ($breakpoint-desktop - 1))
+        { @content; }
+    }
+
+///
+/// Media wrapper. Scope for desktop theming.
+/// Dependant on a hardcoded breakpoint.
+/// 
+/// @example scss
+///     @include breakpoint.desktop {
+///         background-color: red;
+///         }
+/// 
+/// @see {mixin} mobile
+/// 
+@mixin desktop {
+    @media only screen and (min-width: $breakpoint-desktop)
+        { @content; }
+    }

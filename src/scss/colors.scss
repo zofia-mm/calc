@@ -1,0 +1,36 @@
+@use 'sass:map';
+
+/// 
+/// Scope with access to color variables.
+/// Depentand on parent class.
+/// 
+/// @example markup
+///     <div class="light"> // parent, theme container
+///         <button>
+///     <div>
+/// 
+/// @example scss
+///     @include colors.themed {
+///         button {
+///             background-color: colors.$background;
+///             }
+///         }
+/// 
+@mixin themed
+{
+    .default
+    {
+        $background: yellow !global;
+        @content;
+    }
+    .light
+    {
+        $background: orange !global;
+        @content;
+    }
+    .dark
+    {
+        $background: red !global;
+        @content;
+    }
+}
