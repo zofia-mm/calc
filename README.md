@@ -38,3 +38,8 @@ is a dedicated component
 And, well, it's not a checkbox reskin, it's a limited slider
 [slider](https://www.w3schools.com/howto/howto_js_rangeslider.asp)
 [actual docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)
+
+one component form
+[ngModel](https://angular.io/api/forms/NgModel)
+[why it's not working](https://stackoverflow.com/questions/38892771/cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-input)
+[binding value](https://stackoverflow.com/a/41726357/12731017)

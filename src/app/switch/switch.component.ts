@@ -15,14 +15,9 @@ export class SwitchComponent
     // used for self theming and nothing else
     @Input() theme : Theme = Theme.Default;
 
-    // making the component reusable
-    @Input() label : string = "";
-    @Input() option_amount : number = 0;
-
     // storing and using the value
-    @Input() val : number = 1;
-    @Input() show = ( themeNum : number ) => {
+    @Input() switchValue : number = 1;
+    @Input() onSwitchValueChange = ( themeNum : number ) => {
         console.log( "unplugged switch component" );
-        console.log( this.val );
         }
 }

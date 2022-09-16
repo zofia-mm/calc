@@ -4,7 +4,7 @@
     <div class="main-content">
         <switch
             [theme]="themeController.theme"
-            [show]="themeController.toggleTheme"
+            [onSwitchValueChange]="themeController.toggleTheme"
             ></switch>
         <screen [theme]="themeController.theme"></screen>
         <keyboard [theme]="themeController.theme"></keyboard>
