@@ -1,6 +1,10 @@
 
-:root *
+/* default font */
+body *
 {
     font-family: 'League Spartan';
     font-weight: 700;
 }
+
+/* filling the screen */
+body, app-root { margin: 0; }

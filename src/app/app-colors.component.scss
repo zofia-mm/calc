@@ -1,0 +1,18 @@
+@use '/src/scss/colors.scss';
+
+@include colors.themed
+{
+    .main-container {
+        background-color: colors.$background;
+        color: colors.$on-background;
+        }
+
+    .attribution a {
+        color: colors.$primary;
+        }
+
+    button {
+        background-color: colors.$key;
+        color: colors.$on-key;
+        }
+}

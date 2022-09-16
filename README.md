@@ -24,3 +24,5 @@ mention breakpoints technology from the scrapped shortly project?
 [documenting on angular](https://www.vojtechruzicka.com/documenting-angular-apps-with-typedoc-compodoc-and-angulardoc/)
 [typedoc](https://typedoc.org/)
 [typedoc on github pages](https://www.npmjs.com/package/typedoc-github-wiki-theme)
+
+[typescript classes](https://www.typescriptlang.org/docs/handbook/2/classes.html)
