@@ -1,0 +1,9 @@
+@use '/src/scss/breakpoints.scss' as b;
+
+:host
+{
+    border-radius: 0.5rem;
+    text-align: right;
+    @include b.mobile { padding: 0.5rem 1rem; }
+    @include b.mobile { padding: 0.5rem 1rem; }
+}

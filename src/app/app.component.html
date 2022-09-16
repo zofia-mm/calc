@@ -1,9 +1,13 @@
 <main class="{{themeController.theme}}"> <!-- theme container -->
-<div class="main-container">
+<div class="main-container"> <!-- theme background -->
 
-    <button (click)="toggleTheme()">
-        change theme
-    </button>
+    <div class="main-content">
+        <button (click)="toggleTheme()">
+            change theme
+        </button>
+        <screen [theme]="themeController.theme"></screen>
+        <keyboard [theme]="themeController.theme"></keyboard>
+    </div>
 
     <div class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

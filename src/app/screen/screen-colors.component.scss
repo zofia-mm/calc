@@ -1,0 +1,14 @@
+@use '/src/scss/colors.scss' as c;
+
+@include c.themed
+{
+    :host
+    {
+        background-color: c.$screen;
+        color: c.$on-screen;
+    }
+    button
+    {
+        background-color: yellow;
+    }
+}

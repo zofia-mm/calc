@@ -16,7 +16,7 @@
 /// 
 @mixin themed
 {
-    .default
+    .default, .default *
     {
         $background:        hsl(222, 26%, 31%)  !global;
         $on-background:     white               !global;
@@ -36,7 +36,7 @@
 
         @content;
     }
-    .light
+    .light, .light *
     {
         $background:        hsl(0, 0%, 90%)     !global;
         $on-background:     hsl(60, 10%, 19%)   !global;
@@ -56,7 +56,7 @@
         
         @content;
     }
-    .dark
+    .dark, .dark *
     {
         $background:        hsl(268, 75%, 9%)   !global;
         $on-background:     hsl(52, 100%, 62%)  !global;

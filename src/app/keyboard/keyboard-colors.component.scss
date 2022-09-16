@@ -1,0 +1,21 @@
+@use '/src/scss/colors.scss' as c;
+
+@include c.themed()
+{
+    .num-key {
+        background-color: c.$key;
+        color: c.$on-key;
+        &:hover { background-color: lighten(c.$key, 10%); }
+        }
+    .del-key, .reset-key {
+        background-color: c.$secondary;
+        color: c.$on-secondary;
+        &:hover { background-color: lighten(c.$secondary, 10%); }
+        }
+    .equals-key {
+        background-color: c.$primary;
+        color: c.$on-primary;
+        &:hover { background-color: lighten(c.$primary, 10%); }
+        }
+}
+

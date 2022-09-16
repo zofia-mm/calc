@@ -26,3 +26,7 @@ mention breakpoints technology from the scrapped shortly project?
 [typedoc on github pages](https://www.npmjs.com/package/typedoc-github-wiki-theme)
 
 [typescript classes](https://www.typescriptlang.org/docs/handbook/2/classes.html)
+
+[css grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+
+[lighten function in original answer](https://stackoverflow.com/a/3280990/12731017)

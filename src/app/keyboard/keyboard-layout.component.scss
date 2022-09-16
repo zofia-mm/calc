@@ -1,0 +1,20 @@
+
+/* grid */
+:host > div
+{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.1rem;
+}
+.reset-key, .equals-key 
+{
+    grid-column: span 2;
+}
+
+/* key styling */
+.num-key, .del-key, .reset-key, .equals-key
+{
+    border: none;
+    border-radius: 0.2rem;
+    padding: 1rem 0;
+}

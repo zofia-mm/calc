@@ -1,18 +1,18 @@
-@use '/src/scss/colors.scss';
+@use '/src/scss/colors.scss' as c;
 
-@include colors.themed
+@include c.themed
 {
     .main-container {
-        background-color: colors.$background;
-        color: colors.$on-background;
+        background-color: c.$background;
+        color: c.$on-background;
         }
 
     .attribution a {
-        color: colors.$primary;
+        color: c.$primary;
         }
 
     button {
-        background-color: colors.$key;
-        color: colors.$on-key;
+        background-color: c.$key;
+        color: c.$on-key;
         }
 }
