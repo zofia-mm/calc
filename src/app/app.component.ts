@@ -11,6 +11,7 @@ import { Theme, ThemeController } from 'src/controllers/ThemeController';
     })
 export class AppComponent
 {
+    /* theme */
     themeController : ThemeController = new ThemeController();
     toggleTheme = () => { this.themeController.toggleTheme() }
 }

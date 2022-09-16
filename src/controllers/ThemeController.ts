@@ -1,4 +1,8 @@
 
+/**
+ * Corresponds to style class names in scss mixin themes
+ * (in ~/src/scss/colors.scss).
+ */
 export enum Theme
 {
     Default = "default",
@@ -6,6 +10,9 @@ export enum Theme
     Dark = "dark"
 }
 
+/**
+ * Stores information current theme and means to change it.
+ */
 export class ThemeController
 {
     theme: Theme;
