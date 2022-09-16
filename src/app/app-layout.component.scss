@@ -40,4 +40,12 @@ main
     flex-flow: column;
     @include b.mobile { width: 20rem; }
     @include b.desktop { width: 20rem; }
+
+    & > *:first-child
+    {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
