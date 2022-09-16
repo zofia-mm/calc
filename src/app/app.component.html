@@ -11,8 +11,14 @@
                 ></switch>
         </div>
 
-        <screen [theme]="themeController.theme"></screen>
-        <keyboard [theme]="themeController.theme"></keyboard>
+        <screen
+            [theme]="themeController.theme"
+            [value]="calculationController.screenDisplay"
+            ></screen>
+        <keyboard
+            [theme]="themeController.theme"
+            [calculationController]="calculationController"
+            ></keyboard>
 
     </div>
 

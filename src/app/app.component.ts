@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ThemeController } from 'src/controllers/ThemeController';
+import { CalculationController } from 'src/controllers/CalculationController';
 
 @Component({
     selector: 'app-root',
@@ -12,4 +13,5 @@ import { ThemeController } from 'src/controllers/ThemeController';
 export class AppComponent
 {
     themeController : ThemeController = new ThemeController();
+    calculationController : CalculationController = new CalculationController();
 }

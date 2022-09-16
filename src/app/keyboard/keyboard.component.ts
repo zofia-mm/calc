@@ -1,4 +1,5 @@
 import { Component, Input } from "@angular/core";
+import { CalculationController } from "src/controllers/CalculationController";
 import { Theme } from "src/controllers/ThemeController";
 
 @Component({
@@ -12,4 +13,5 @@ import { Theme } from "src/controllers/ThemeController";
 export class KeyboardComponent
 {
     @Input() theme : Theme = Theme.Default;
+    @Input() calculationController : CalculationController = new CalculationController();
 }
