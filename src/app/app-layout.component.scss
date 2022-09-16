@@ -17,6 +17,11 @@ main, .main-container
 }
 
 /* floating at the bottom */
+main
+{
+    display: block;
+    position: relative;
+}
 .attribution
 {
     position: absolute;

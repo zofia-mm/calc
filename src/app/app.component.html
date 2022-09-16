@@ -2,9 +2,10 @@
 <div class="main-container"> <!-- theme background -->
 
     <div class="main-content">
-        <button (click)="toggleTheme()">
-            change theme
-        </button>
+        <switch
+            [theme]="themeController.theme"
+            [show]="themeController.toggleTheme"
+            ></switch>
         <screen [theme]="themeController.theme"></screen>
         <keyboard [theme]="themeController.theme"></keyboard>
     </div>

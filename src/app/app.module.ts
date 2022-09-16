@@ -4,15 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { KeyboardComponent } from './keyboard/keyboard.component';
 import { ScreenComponent } from './screen/screen.component';
+import { SwitchComponent } from './switch/switch.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
         AppComponent,
         ScreenComponent,
-        KeyboardComponent
+        KeyboardComponent,
+        SwitchComponent
         ],
     imports: [
-        BrowserModule
+        BrowserModule,
+        FormsModule
         ],
     providers: [],
     bootstrap: [AppComponent]

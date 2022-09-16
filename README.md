@@ -30,3 +30,11 @@ mention breakpoints technology from the scrapped shortly project?
 [css grid](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
 
 [lighten function in original answer](https://stackoverflow.com/a/3280990/12731017)
+
+When creating the switch, first thing my brain went
+"aha! it's a checkbox reskin!", but since I had experience
+styling checkboxes, I decided to check just in case, if there
+is a dedicated component
+And, well, it's not a checkbox reskin, it's a limited slider
+[slider](https://www.w3schools.com/howto/howto_js_rangeslider.asp)
+[actual docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range)

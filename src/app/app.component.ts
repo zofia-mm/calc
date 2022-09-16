@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Theme, ThemeController } from 'src/controllers/ThemeController';
+import { ThemeController } from 'src/controllers/ThemeController';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +11,5 @@ import { Theme, ThemeController } from 'src/controllers/ThemeController';
     })
 export class AppComponent
 {
-    /* theme */
     themeController : ThemeController = new ThemeController();
-    toggleTheme = () => { this.themeController.toggleTheme() }
 }

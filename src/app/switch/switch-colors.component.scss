@@ -1,0 +1,27 @@
+@use '/src/scss/colors.scss' as c;
+
+@include c.themed
+{
+    input[type=range]
+    {
+        -webkit-appearance: none;
+        background-color: c.$complementary;
+
+        &::-webkit-slider-thumb
+        {
+            background-color: c.$primary;
+            border: none;
+        }
+        &::-moz-range-thumb
+        {
+            background-color: c.$primary;
+            border: none;
+        }
+        &::-ms-thumb
+        {
+            background-color: c.$primary;
+            border: none;
+        }
+    }
+}
+

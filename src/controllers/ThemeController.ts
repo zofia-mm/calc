@@ -22,13 +22,13 @@ export class ThemeController
         this.theme = _theme;
     }
 
-    toggleTheme = () =>
+    toggleTheme = ( themeNum : number ) =>
     {
-        switch( this.theme )
+        switch( themeNum )
         {
-            case Theme.Default:  { this.theme = Theme.Light; break; };
-            case Theme.Light:    { this.theme = Theme.Dark; break; };
-            case Theme.Dark:     { this.theme = Theme.Default; break; };
+            case 1: { this.theme = Theme.Default; break; };
+            case 2: { this.theme = Theme.Light; break; };
+            case 3: { this.theme = Theme.Dark; break; };
         }
     }
 }
