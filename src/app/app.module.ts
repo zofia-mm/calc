@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { KeyboardComponent } from './keyboard/keyboard.component';
+import { ThemeSwitchComponent } from './theme-switch/theme-switch.component';
 import { ScreenComponent } from './screen/screen.component';
-import { SwitchComponent } from './switch/switch.component';
-import { FormsModule } from '@angular/forms';
+import { KeyboardComponent } from './keyboard/keyboard.component';
+
 
 @NgModule({
     declarations: [
         AppComponent,
+        ThemeSwitchComponent,
         ScreenComponent,
-        KeyboardComponent,
-        SwitchComponent
+        KeyboardComponent
         ],
     imports: [
         BrowserModule,

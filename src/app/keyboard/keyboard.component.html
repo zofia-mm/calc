@@ -3,24 +3,24 @@
     <button class="num-key" (click)="calculationController.onNumberInput(7)">7</button>
     <button class="num-key" (click)="calculationController.onNumberInput(8)">8</button>
     <button class="num-key" (click)="calculationController.onNumberInput(9)">9</button>
-    <button class="del-key">del</button>
+    <button class="del-key" (click)="calculationController.onDelInput()">del</button>
 
     <button class="num-key" (click)="calculationController.onNumberInput(4)">4</button>
     <button class="num-key" (click)="calculationController.onNumberInput(5)">5</button>
     <button class="num-key" (click)="calculationController.onNumberInput(6)">6</button>
-    <button class="num-key">+</button>
+    <button class="num-key" (click)="calculationController.onOperatorInput(Operation.Add)">+</button>
 
     <button class="num-key" (click)="calculationController.onNumberInput(1)">1</button>
     <button class="num-key" (click)="calculationController.onNumberInput(2)">2</button>
     <button class="num-key" (click)="calculationController.onNumberInput(3)">3</button>
-    <button class="num-key">-</button>
+    <button class="num-key" (click)="calculationController.onOperatorInput(Operation.Subtract)">-</button>
 
     <button class="num-key" (click)="calculationController.onPointInput()">.</button>
     <button class="num-key" (click)="calculationController.onNumberInput(0)">0</button>
-    <button class="num-key">/</button>
-    <button class="num-key">×</button>
+    <button class="num-key" (click)="calculationController.onOperatorInput(Operation.Divide)">/</button>
+    <button class="num-key" (click)="calculationController.onOperatorInput(Operation.Multiply)">×</button>
 
-    <button class="reset-key">reset</button>
-    <button class="equals-key">=</button>
+    <button class="reset-key" (click)="calculationController.onResetInput()">reset</button>
+    <button class="equals-key" (click)="calculationController.onEqualsInput()">=</button>
 
 </div>

@@ -15,12 +15,7 @@ export enum Theme
  */
 export class ThemeController
 {
-    theme: Theme;
-
-    constructor( _theme : Theme = Theme.Default )
-    {
-        this.theme = _theme;
-    }
+    theme: Theme = Theme.Default;
 
     toggleTheme = ( themeNum : number ) =>
     {

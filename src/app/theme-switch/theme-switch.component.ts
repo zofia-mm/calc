@@ -2,14 +2,14 @@ import { Component, Input } from "@angular/core";
 import { Theme } from "src/controllers/ThemeController";
 
 @Component({
-    selector: 'switch',
-    templateUrl: './switch.component.html',
+    selector: 'theme-switch',
+    templateUrl: './theme-switch.component.html',
     styleUrls: [
-        './switch-colors.component.scss',
-        './switch-layout.component.scss'
+        './theme-switch-colors.component.scss',
+        './theme-switch-layout.component.scss'
         ]
     })
-export class SwitchComponent
+export class ThemeSwitchComponent
 {
     // the theme it gets from parent
     // used for self theming and nothing else
@@ -17,7 +17,7 @@ export class SwitchComponent
 
     // storing and using the value
     @Input() switchValue : number = 1;
-    @Input() onSwitchValueChange = ( themeNum : number ) => {
+    @Input() switchValueChange = (themeNum : number ) => {
         console.log( "unplugged switch component" );
         }
 }
