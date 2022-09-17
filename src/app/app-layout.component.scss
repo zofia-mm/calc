@@ -14,6 +14,7 @@ main, .main-container
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-flow: column;
 }
 
 /* floating at the bottom */
@@ -24,13 +25,21 @@ main
 }
 .attribution
 {
-    position: absolute;
-    bottom: 0;
-    left: 0; right: 0;
     text-align: center;
 
-    @include b.mobile   { margin-bottom: 2rem; }
-    @include b.desktop  { margin-bottom: 2rem; }
+    @include b.mobile
+    {
+        margin-top: 1.2rem;
+        font-size: 14px;
+        position: relative;
+    }
+    @include b.desktop
+    {
+        position: absolute;
+        bottom: 0;
+        left: 0; right: 0;
+        margin-bottom: 2rem;
+    }
 }
 
 /* the main column */
@@ -39,18 +48,18 @@ h1 { margin: 0; margin-left: 0.5rem; margin-top: 12px; }
 {
     display: flex;
     flex-flow: column;
-    @include b.mobile  { width: 20rem; }
+    @include b.mobile  { width: 87%; }
     @include b.desktop { width: 34rem; }
 
     & > *:nth-child(1)
     {
-        @include b.mobile  { margin-bottom: 2rem; }
-        @include b.desktop { margin-bottom: 2rem; }
+        @include b.mobile  { margin-bottom: 1rem; }
+        @include b.desktop { margin-bottom: 1.5rem; }
     }
     & > *:nth-child(2)
     {
-        @include b.mobile  { margin-bottom: 1.5rem; }
-        @include b.desktop { margin-bottom: 1.5rem; }
+        @include b.mobile  { margin-bottom: 1.2rem; }
+        @include b.desktop { margin-bottom: 1rem; }
     }
 }
 

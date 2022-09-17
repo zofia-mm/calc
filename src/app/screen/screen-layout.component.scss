@@ -4,13 +4,19 @@
 {
     border-radius: 0.6rem;
     text-align: right;
-    @include b.mobile { padding: 2rem 1rem; }
+    @include b.mobile { padding: 0.8rem 1rem; }
     @include b.desktop { padding: 1.5rem 2rem; }
 }
 
 h1
 {
-    font-size: 58px;
     margin: 0;
-    margin-top: 10px;
+    @include b.mobile {
+        font-size: 40px;
+        margin-top: 8px;
+        }
+    @include b.desktop {
+        font-size: 58px;
+        margin-top: 10px;
+        }
 }
