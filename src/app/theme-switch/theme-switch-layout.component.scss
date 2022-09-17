@@ -2,8 +2,8 @@
 /* grid */
 :host > * {
     display: grid;
-    grid-template-columns: 5rem 5rem;
-    grid-auto-rows: 1rem 1.2rem;
+    grid-template-columns: 6rem 4rem;
+    grid-auto-rows: 1.2rem 1.5rem;
     row-gap: 0;
     column-gap: 0;
     }
@@ -33,11 +33,12 @@ input[type=range]
 {
     margin: 0;
     border-radius: 99px;
-    padding: 5%;
+    padding: 10%;
 }
 
 .labels
 {
+    margin: 0 4px;
     display: flex;
     flex-flow: row;
 }
@@ -47,4 +48,16 @@ input[type=range]
     display: block;
     flex-grow: 1;
     flex-basis: 0;
+}
+
+/* typography */
+.switch-label
+{
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.label
+{
+    font-size: 14px;
 }

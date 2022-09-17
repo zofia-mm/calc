@@ -4,17 +4,35 @@
 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0.1rem;
+    grid-auto-rows: 4rem;
+    gap: 1.6rem;
 }
 .reset-key, .equals-key 
 {
     grid-column: span 2;
 }
 
-/* key styling */
+/* styling */
+:host
+{
+    padding: 2rem;
+    border-radius: 0.6rem;
+}
 .num-key, .del-key, .reset-key, .equals-key
 {
     border: none;
-    border-radius: 0.2rem;
+    border-radius: 0.6rem;
     padding: 1rem 0;
+}
+
+/* typography */
+button
+{
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+.del-key, .reset-key
+{
+    font-size: 28px;
 }

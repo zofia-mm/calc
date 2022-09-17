@@ -33,19 +33,32 @@ main
     @include b.desktop  { margin-bottom: 2rem; }
 }
 
-
+/* the main column */
+h1 { margin: 0; margin-left: 0.5rem; margin-top: 12px; }
 .main-content
 {
     display: flex;
     flex-flow: column;
-    @include b.mobile { width: 20rem; }
-    @include b.desktop { width: 20rem; }
+    @include b.mobile  { width: 20rem; }
+    @include b.desktop { width: 34rem; }
 
-    & > *:first-child
+    & > *:nth-child(1)
     {
-        display: flex;
-        flex-flow: row;
-        align-items: center;
-        justify-content: space-between;
+        @include b.mobile  { margin-bottom: 2rem; }
+        @include b.desktop { margin-bottom: 2rem; }
     }
+    & > *:nth-child(2)
+    {
+        @include b.mobile  { margin-bottom: 1.5rem; }
+        @include b.desktop { margin-bottom: 1.5rem; }
+    }
+}
+
+/* top most row */
+.main-content > *:nth-child(1)
+{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
 }

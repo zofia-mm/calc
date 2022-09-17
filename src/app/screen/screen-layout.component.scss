@@ -2,9 +2,15 @@
 
 :host
 {
-    height: 5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.6rem;
     text-align: right;
-    @include b.mobile { padding: 0.5rem 1rem; }
-    @include b.desktop { padding: 0.5rem 1rem; }
+    @include b.mobile { padding: 2rem 1rem; }
+    @include b.desktop { padding: 1.5rem 2rem; }
+}
+
+h1
+{
+    font-size: 58px;
+    margin: 0;
+    margin-top: 10px;
 }

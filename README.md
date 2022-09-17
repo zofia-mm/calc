@@ -43,3 +43,5 @@ one component form
 [ngModel](https://angular.io/api/forms/NgModel)
 [why it's not working](https://stackoverflow.com/questions/38892771/cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-input)
 [binding value](https://stackoverflow.com/a/41726357/12731017)
+
+switch uses a grid + screenie

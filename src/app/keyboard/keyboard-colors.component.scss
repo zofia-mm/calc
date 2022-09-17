@@ -2,20 +2,45 @@
 
 @include c.themed()
 {
-    .num-key {
+    :host { background-color: c.$complementary; }
+
+    .num-key
+    {
         background-color: c.$key;
         color: c.$on-key;
-        &:hover { background-color: lighten(c.$key, 10%); }
-        }
-    .del-key, .reset-key {
+        box-shadow: inset 0 -0.3rem c.$key-shadow;
+        &:hover {
+            background-color: lighten(c.$key, 10%);
+            box-shadow: inset 0 -0.3rem lighten($color: c.$key-shadow, $amount: 15%);
+            }
+    }
+    .del-key, .reset-key
+    {
         background-color: c.$secondary;
         color: c.$on-secondary;
-        &:hover { background-color: lighten(c.$secondary, 10%); }
-        }
-    .equals-key {
+        box-shadow: inset 0 -0.3rem c.$secondary-shadow;
+        &:hover {
+            background-color: lighten(c.$secondary, 10%);
+            box-shadow: inset 0 -0.3rem lighten($color: c.$secondary-shadow, $amount: 15%);
+            }
+    }
+    .equals-key
+    {
         background-color: c.$primary;
         color: c.$on-primary;
-        &:hover { background-color: lighten(c.$primary, 10%); }
-        }
+        box-shadow: inset 0 -0.3rem c.$primary-shadow;
+        &:hover {
+            background-color: lighten(c.$primary, 10%);
+            box-shadow: inset 0 -0.3rem lighten($color: c.$primary-shadow, $amount: 15%);
+            }
+    }
+
+    .num-key, .del-key, .reset-key, .equals-key
+    {
+        &:active {
+            padding-bottom: 0.3rem;
+            box-shadow: inset 0 0.3rem c.$complementary;
+            }
+    }
 }
 
