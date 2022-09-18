@@ -6,8 +6,8 @@ export class CalculationController
     private numberInput = new NumberInput();
     private calculation = new Calculation();
     screenDisplay = new ScreenDisplay(
-        () => { this.screenDisplay.setValueTo( this.numberInput.getStringValue() ) },
-        () => { this.screenDisplay.setValueTo( String( this.calculation.answer ) ) }
+        () => { this.screenDisplay.setValueTo( this.numberInput.getStringValue() ); },
+        () => { this.screenDisplay.setValueTo( String( this.calculation.answer ) ); }
         );
     
     // special input
@@ -22,22 +22,28 @@ export class CalculationController
     // number inputs
     private numberInputStateUpdate = ( task : ()=>void ) => { switch( this.state )
     {
-        case CalculationState.Number1, CalculationState.Number2: {
+        case CalculationState.Number1:
+        case CalculationState.Number2: {
             task();
             this.screenDisplay.update();
             break; }
 
-        case CalculationState.Operator:   { this.state = CalculationState.Number2; break; }
-        case CalculationState.ShowAnswer: { this.state = CalculationState.Number1; break; }
-        case CalculationState.Operator, CalculationState.ShowAnswer: {
+        case CalculationState.Operator: {
+            this.state = CalculationState.Number2;
+            this.numberInput.reset();
+            task();
+            this.screenDisplay.show( Shown.Input );
+            break; }
+        case CalculationState.ShowAnswer: {
+            this.state = CalculationState.Number1;
             this.numberInput.reset();
             task();
             this.screenDisplay.show( Shown.Input );
             break; }
     } }
-    onNumberInput = ( num : number ) => this.numberInputStateUpdate( () => {
+    onNumberInput = ( num : number ) => { this.numberInputStateUpdate( () => {
         this.numberInput.append( num );
-        } );
+        } ); }
     onPointInput = () => this.numberInputStateUpdate( () => {
         this.numberInput.inputType = NumberInputType.Fraction;
         } );
@@ -73,12 +79,17 @@ export class CalculationController
     {
         switch( this.state )
         {
-            case CalculationState.Operator, CalculationState.Number2: {
+            case CalculationState.Number1: {
+                this.calculation.number1 = this.numberInput.getNumberValue();
+                break; }
+
+            case CalculationState.Operator:
+            case CalculationState.Number2: {
                 this.calculation.number2 = this.numberInput.getNumberValue();
                 break; }
             
             case CalculationState.ShowAnswer: {
-                this.calculation.number1 = this.numberInput.getNumberValue();
+                this.calculation.number1 = this.calculation.answer;
                 break; }
         }
 
