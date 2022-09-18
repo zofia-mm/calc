@@ -13,11 +13,11 @@
 
         <screen
             [theme]="themeController.theme"
-            [value]="calculationController.screenDisplay"
+            [value]="calculationController.screenDisplay.value"
             ></screen>
         <keyboard
             [theme]="themeController.theme"
-            [calculationController]="calculationController"
+            [cc]="calculationController"
             ></keyboard>
 
     </div>

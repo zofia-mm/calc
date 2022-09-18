@@ -13,7 +13,7 @@ import { Theme } from "src/controllers/ThemeController";
 export class KeyboardComponent
 {
     @Input() theme : Theme = Theme.Default;
-    @Input() calculationController : CalculationController = new CalculationController();
+    @Input() cc : CalculationController = new CalculationController();
 
     Operation = Operation;
 }

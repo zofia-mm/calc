@@ -1,91 +1,105 @@
 
-export enum NumberInputType { Integer, Fraction }
-export enum NumberCurrentlyInputed { Number1, Number2 }
-export enum Operation { Add, Subtract, Multiply, Divide }
-
+enum CalculationState { Number1, Operator, Number2, ShowAnswer }
 export class CalculationController
 {
-    SCREEN_DISPLAY_DEFAULT = "0";
-    screenDisplay = this.SCREEN_DISPLAY_DEFAULT;
-    private updateScreenDisplay = () => {
-        this.screenDisplay = this.numberInput.getStringValue();
-        }
+    private state = CalculationState.Number1;
+    private numberInput = new NumberInput();
+    private calculation = new Calculation();
+    screenDisplay = new ScreenDisplay(
+        () => { this.screenDisplay.setValueTo( this.numberInput.getStringValue() ) },
+        () => { this.screenDisplay.setValueTo( String( this.calculation.answer ) ) }
+        );
     
-    numberInput = new NumberInput();
-    number1 : number = 0;
-    operation : Operation = Operation.Add;
-    numberCurrentlyInputed : NumberCurrentlyInputed = NumberCurrentlyInputed.Number1;
+    // special input
+    onResetInput = () =>
+    {
+        this.calculation.reset();
+        this.numberInput.reset();
+        this.state = CalculationState.Number1;
+        this.screenDisplay.show( Shown.Input );
+    }
 
-    /* number inputs */
-    onNumberInput = ( num : number ) => {
+    // number inputs
+    private numberInputStateUpdate = ( task : ()=>void ) => { switch( this.state )
+    {
+        case CalculationState.Number1, CalculationState.Number2: {
+            task();
+            this.screenDisplay.update();
+            break; }
+
+        case CalculationState.Operator:   { this.state = CalculationState.Number2; break; }
+        case CalculationState.ShowAnswer: { this.state = CalculationState.Number1; break; }
+        case CalculationState.Operator, CalculationState.ShowAnswer: {
+            this.numberInput.reset();
+            task();
+            this.screenDisplay.show( Shown.Input );
+            break; }
+    } }
+    onNumberInput = ( num : number ) => this.numberInputStateUpdate( () => {
         this.numberInput.append( num );
-        this.updateScreenDisplay();
-        }
-    onPointInput = () => {
+        } );
+    onPointInput = () => this.numberInputStateUpdate( () => {
         this.numberInput.inputType = NumberInputType.Fraction;
-        this.updateScreenDisplay();
-        }
+        } );
+    onDelInput = () => this.numberInputStateUpdate( () => {
+        this.numberInput.removeLast();
+        } );
 
-    /* equasion inputs */
+    // equation inputs
     onOperatorInput = ( operation : Operation ) =>
     {
-        this.operation = operation;
+        switch( this.state )
+        {
+            case CalculationState.Number1: {
+                this.calculation.number1 = this.numberInput.getNumberValue();
+                break; }
+            
+            case CalculationState.Number2: {
+                this.calculation.number2 = this.numberInput.getNumberValue();
+                this.calculation.calculate();
+                this.calculation.number1 = this.calculation.answer;
+                this.screenDisplay.show( Shown.Answer );
+                break; } 
+            
+            case CalculationState.ShowAnswer: {
+                this.calculation.number1 = this.calculation.answer;
+                break;}
+        }
 
-        this.number1 = this.numberInput.getNumberValue();
-        this.numberCurrentlyInputed = NumberCurrentlyInputed.Number2;
-        this.numberInput = new NumberInput();
-        this.updateScreenDisplay();
+        this.state = CalculationState.Operator;
+        this.calculation.operation = operation;
     }
     onEqualsInput = () =>
     {
-        // operation
-        const number2 = this.numberInput.getNumberValue();
-        switch( this.operation )
+        switch( this.state )
         {
-        case Operation.Add: {
-            this.numberInput = new NumberInput( this.number1 + number2 );
-            break; }
-        case Operation.Subtract: {
-            this.numberInput = new NumberInput( this.number1 - number2 );
-            break; }
-        case Operation.Multiply: {
-            this.numberInput = new NumberInput( this.number1 * number2 );
-            break; }
-        case Operation.Divide: {
-            this.numberInput = new NumberInput( this.number1 / number2 );
-            break; }
+            case CalculationState.Operator, CalculationState.Number2: {
+                this.calculation.number2 = this.numberInput.getNumberValue();
+                break; }
+            
+            case CalculationState.ShowAnswer: {
+                this.calculation.number1 = this.numberInput.getNumberValue();
+                break; }
         }
 
-        // resetting
-        this.numberCurrentlyInputed = NumberCurrentlyInputed.Number1;
-        this.updateScreenDisplay();
+        this.state = CalculationState.ShowAnswer;
+        this.calculation.calculate();
+        this.screenDisplay.show( Shown.Answer );
     }
-
-    /* special inputs */
-    onDelInput = () => {
-        this.numberInput.removeLast();
-        }
-    onResetInput = () => {
-        this.numberInput = new NumberInput();
-        this.screenDisplay = this.SCREEN_DISPLAY_DEFAULT;
-        }
 }
 
-export class NumberInput
+enum NumberInputType { Integer, Fraction }
+class NumberInput
 {
     integerInput : string = "";
     fractionInput : string = "";
     inputType : NumberInputType = NumberInputType.Integer;
 
-    constructor( starterNumber : number = 0 )
+    reset = () =>
     {
-        if( starterNumber == 0 ) { return; }
-
-        const integerPart = Math.floor( starterNumber );
-        this.integerInput =  String( integerPart );
-
-        const fractionPart = starterNumber - integerPart;
-        if( fractionPart == 0 ) return; else this.fractionInput = String( fractionPart );
+        this.integerInput = "";
+        this.fractionInput = "";
+        this.inputType = NumberInputType.Integer;
     }
 
     getNumberValue = () =>
@@ -149,4 +163,66 @@ export class NumberInput
             return; }
         this.fractionInput = this.fractionInput.slice( 0, -1 );
     }
+}
+
+enum Shown { Input, Answer }
+class ScreenDisplay
+{
+    value = "0";
+    setValueTo = ( newValue: string ) => { this.value = newValue; }
+
+    private showInput = ()=>{};
+    private showAnswer = ()=>{};
+    constructor( showInput: ()=>void, showAnswer: ()=>void )
+    {
+        this.showInput = showInput;
+        this.showAnswer = showAnswer;
+    }
+
+    currentlyShown = Shown.Input;
+    show( shown : Shown )
+    {
+        this.currentlyShown = shown;
+        this.update();
+    }
+    update = () => { switch( this.currentlyShown )
+    {
+        case Shown.Input:  { this.showInput(); break; }
+        case Shown.Answer: { this.showAnswer(); break; }
+    } }
+}
+
+export enum Operation { Add, Subtract, Multiply, Divide }
+class Calculation
+{
+    number1 : number = 0;
+    number2 : number = 0;
+    answer : number = 0;
+    operation = Operation.Add;
+    reset = () =>
+    {
+        this.number1 = 0;
+        this.number2 = 0;
+        this.answer = 0;
+        this.operation = Operation.Add;
+    }
+
+    calculate = () => { switch( this.operation )
+    {
+        case Operation.Add: {
+            this.answer = this.number1 + this.number2;
+            break; }
+
+        case Operation.Subtract: {
+            this.answer = this.number1 - this.number2;
+            break; }
+
+        case Operation.Multiply: {
+            this.answer = this.number1 * this.number2;
+            break; }
+
+        case Operation.Divide: {
+            this.answer = this.number1 / this.number2;
+            break; }
+    } }
 }
