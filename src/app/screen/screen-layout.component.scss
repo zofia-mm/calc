@@ -11,6 +11,8 @@
 h1
 {
     margin: 0;
+    overflow: hidden;
+    
     @include b.mobile {
         font-size: 40px;
         margin-top: 8px;
