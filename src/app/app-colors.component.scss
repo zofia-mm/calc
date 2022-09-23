@@ -4,11 +4,11 @@
 {
     .attribution a {
         color: c.$primary;
-        @include c.dynamic-background-color( "background" );
+        @include c.dynamic-colors( "background" );
         }
 }
 
 .main-container
 {
-    @include c.dynamic-background-color( "background" );
+    @include c.dynamic-colors( "background" );
 }
