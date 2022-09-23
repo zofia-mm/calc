@@ -2,17 +2,13 @@
 
 @include c.themed
 {
-    .main-container {
-        background-color: c.$background;
-        color: c.$on-background;
-        }
-
     .attribution a {
         color: c.$primary;
+        @include c.dynamic-background-color( "background" );
         }
+}
 
-    button {
-        background-color: c.$key;
-        color: c.$on-key;
-        }
+.main-container
+{
+    @include c.dynamic-background-color( "background" );
 }

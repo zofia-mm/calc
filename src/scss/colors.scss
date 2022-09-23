@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use 'sass:list';
+
 /// 
 /// Scope with access to color variables.
 /// Depentand on parent class.
@@ -75,5 +78,56 @@
         $on-key:            hsl(52, 100%, 62%)  !global;
         
         @content;
+    }
+}
+
+
+
+
+
+$default:
+(
+    "background": violet,
+    "foreground": orange
+);
+$light:
+(
+    "background": yellow,
+    "foreground": blue
+);
+$dark:
+(
+    "background": black,
+    "foreground": aqua
+);
+
+$themes:
+(
+    "default" : $default,
+    "light" : $light,
+    "dark" : $dark
+);
+@mixin dynamic-background-color( $color-name )
+{
+    @each $theme-name, $theme-colors in $themes
+    {
+        // background that changes with theme
+        .#{$theme-name} & {
+            background-color: map-get( $theme-colors, $color-name );
+            }
+
+        // animation of background chnage
+        @each $inner-theme-name, $inner-theme-colors in $themes {
+            .prev-#{$inner-theme-name}.#{$theme-name} &
+            {
+                $prev-color: map-get( $inner-theme-colors, $color-name );
+                $now-color:  map-get( $theme-colors, $color-name );
+                @keyframes anim-#{$inner-theme-name}-#{$theme-name} {
+                    from { background-color: $prev-color; }
+                    to   { background-color: $now-color; }
+                    }
+                animation: anim-#{$inner-theme-name}-#{$theme-name};
+                animation-duration: 1s;
+            } }
     }
 }
