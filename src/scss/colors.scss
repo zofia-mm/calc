@@ -1,6 +1,50 @@
 @use 'sass:map';
 @use 'sass:list';
 
+@use './color-maps.scss' as *;
+
+@mixin dynamic-colors( $color-name )
+{
+    @each $theme-name, $theme-colors in $themes
+    {
+        // background that changes with theme
+        .#{$theme-name} & {
+            background-color: map-get( $theme-colors, $color-name, "b" );
+            color: map-get( $theme-colors, $color-name, "on" );
+            }
+
+        // animation of background chnage
+        @each $inner-theme-name, $inner-theme-colors in $themes {
+            .prev-#{$inner-theme-name}.#{$theme-name} &
+            {
+                @keyframes anim-#{$inner-theme-name}-#{$theme-name} {
+                    from {
+                        background-color: map-get( $inner-theme-colors, $color-name, "b" );
+                        color: map-get( $inner-theme-colors, $color-name, "on" );
+                        }
+                    to {
+                        background-color: map-get( $theme-colors, $color-name, "b" );
+                        color: map-get( $theme-colors, $color-name, "on" );
+                        }
+                    }
+                animation: anim-#{$inner-theme-name}-#{$theme-name};
+                animation-duration: 1s;
+            } }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /// 
 /// Scope with access to color variables.
 /// Depentand on parent class.
@@ -78,65 +122,5 @@
         $on-key:            hsl(52, 100%, 62%)  !global;
         
         @content;
-    }
-}
-
-
-
-
-
-$default:
-(
-    "background": (
-        "b" : violet,
-        "on": yellow
-        )
-);
-$light:
-(
-    "background": (
-        "b" : orange,
-        "on": green
-        ));
-$dark:
-(
-    "background": (
-        "b" : red,
-        "on": blue
-        ));
-
-$themes:
-(
-    "default" : $default,
-    "light" : $light,
-    "dark" : $dark
-);
-@mixin dynamic-colors( $color-name )
-{
-    @each $theme-name, $theme-colors in $themes
-    {
-        // background that changes with theme
-        .#{$theme-name} & {
-            background-color: map-get( $theme-colors, $color-name, "b" );
-            color: map-get( $theme-colors, $color-name, "on" );
-            }
-
-        // animation of background chnage
-        @each $inner-theme-name, $inner-theme-colors in $themes {
-            .prev-#{$inner-theme-name}.#{$theme-name} &
-            {
-                @keyframes anim-#{$inner-theme-name}-#{$theme-name} {
-                    from {
-                        background-color: map-get( $inner-theme-colors, $color-name, "b" );
-                        color: map-get( $inner-theme-colors, $color-name, "on" );
-                        }
-                    to {
-                        background-color: map-get( $theme-colors, $color-name, "b" );
-                        color: map-get( $theme-colors, $color-name, "on" );
-                        }
-                    }
-                animation: anim-#{$inner-theme-name}-#{$theme-name};
-                animation-duration: 1s;
-            } }
     }
 }
