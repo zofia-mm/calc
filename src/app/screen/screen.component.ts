@@ -11,6 +11,6 @@ import { Theme } from "src/controllers/ThemeController";
     })
 export class ScreenComponent
 {
-    @Input() theme : Theme = Theme.Default;
+    @Input() theme : string = Theme.Default;
     @Input() value : string = "399,981";
 }

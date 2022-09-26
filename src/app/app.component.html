@@ -6,17 +6,17 @@
         <div>
             <h1>calc</h1>
             <theme-switch
-                [theme]="themeController.theme"
+                [theme]="themeController.dynamicTheme"
                 [switchValueChange]="themeController.toggleTheme"
                 ></theme-switch>
         </div>
 
         <screen
-            [theme]="themeController.theme"
+            [theme]="themeController.dynamicTheme"
             [value]="calculationController.screenDisplay.value"
             ></screen>
         <keyboard
-            [theme]="themeController.theme"
+            [theme]="themeController.dynamicTheme"
             [cc]="calculationController"
             ></keyboard>
 

@@ -1,27 +1,23 @@
 @use '/src/scss/colors.scss' as c;
 
-@include c.themed
+input[type=range]
 {
-    input[type=range]
-    {
-        -webkit-appearance: none;
-        background-color: c.$complementary;
+    -webkit-appearance: none;
+    @include c.dynamic-colors( "complementary" );
 
-        &::-webkit-slider-thumb
-        {
-            background-color: c.$primary;
-            border: none;
-        }
-        &::-moz-range-thumb
-        {
-            background-color: c.$primary;
-            border: none;
-        }
-        &::-ms-thumb
-        {
-            background-color: c.$primary;
-            border: none;
-        }
+    &::-webkit-slider-thumb
+    {
+        @include c.dynamic-colors( "primary" );
+        border: none;
+    }
+    &::-moz-range-thumb
+    {
+        @include c.dynamic-colors( "primary" );
+        border: none;
+    }
+    &::-ms-thumb
+    {
+        @include c.dynamic-colors( "primary" );
+        border: none;
     }
 }
-

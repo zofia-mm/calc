@@ -13,11 +13,11 @@
             color: map-get( $theme-colors, $color-name, "on" );
             }
 
-        // animation of background chnage
+        // animation of background change
         @each $inner-theme-name, $inner-theme-colors in $themes {
             .prev-#{$inner-theme-name}.#{$theme-name} &
             {
-                @keyframes anim-#{$inner-theme-name}-#{$theme-name} {
+                @keyframes anim-#{$inner-theme-name}-#{$theme-name}-for-#{$color-name} {
                     from {
                         background-color: map-get( $inner-theme-colors, $color-name, "b" );
                         color: map-get( $inner-theme-colors, $color-name, "on" );
@@ -27,7 +27,7 @@
                         color: map-get( $theme-colors, $color-name, "on" );
                         }
                     }
-                animation: anim-#{$inner-theme-name}-#{$theme-name};
+                animation: anim-#{$inner-theme-name}-#{$theme-name}-for-#{$color-name};
                 animation-duration: 1s;
             } }
     }

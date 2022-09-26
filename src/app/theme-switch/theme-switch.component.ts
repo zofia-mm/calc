@@ -13,7 +13,7 @@ export class ThemeSwitchComponent
 {
     // the theme it gets from parent
     // used for self theming and nothing else
-    @Input() theme : Theme = Theme.Default;
+    @Input() theme : string = Theme.Default;
 
     // storing and using the value
     @Input() switchValue : number = 1;

@@ -4,7 +4,6 @@
 {
     .attribution a {
         color: c.$primary;
-        @include c.dynamic-colors( "background" );
         }
 }
 

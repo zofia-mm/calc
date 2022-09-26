@@ -2,12 +2,8 @@
 
 @include c.themed()
 {
-    :host { background-color: c.$complementary; }
-
     .num-key
     {
-        background-color: c.$key;
-        color: c.$on-key;
         box-shadow: inset 0 -0.3rem c.$key-shadow;
         &:hover {
             background-color: lighten(c.$key, 10%);
@@ -16,8 +12,6 @@
     }
     .del-key, .reset-key
     {
-        background-color: c.$secondary;
-        color: c.$on-secondary;
         box-shadow: inset 0 -0.3rem c.$secondary-shadow;
         &:hover {
             background-color: lighten(c.$secondary, 10%);
@@ -26,8 +20,6 @@
     }
     .equals-key
     {
-        background-color: c.$primary;
-        color: c.$on-primary;
         box-shadow: inset 0 -0.3rem c.$primary-shadow;
         &:hover {
             background-color: lighten(c.$primary, 10%);
@@ -44,3 +36,15 @@
     }
 }
 
+:host {
+    @include c.dynamic-colors( "complementary" );
+    }
+.num-key {
+    @include c.dynamic-colors( "key" );
+    }
+.del-key, .reset-key {
+    @include c.dynamic-colors( "secondary" );
+    }
+.equals-key {
+    @include c.dynamic-colors( "primary" );
+    }
