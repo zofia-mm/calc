@@ -1,6 +1,6 @@
-@use '/src/scss/colors.scss' as c;
+@use '/src/scss/themes.scss' as *;
 
-:host
-{
-    @include c.dynamic-colors( "screen" );
-}
+
+:host {
+    @include dynamic-colors( "screen", "on-screen" );
+    }

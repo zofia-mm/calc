@@ -1,0 +1,91 @@
+@use 'sass:map';
+@use 'sass:list';
+
+@use './theme-maps.scss' as *;
+
+
+@mixin dynamic-colors( $background-color-name, $color-name ) {
+@each $theme-name, $theme in $themes
+{
+    @keyframes anim-color-#{$theme-name}
+    {
+        from {
+            background-color: var(--background-color-prev);
+            color: var(--color-prev);
+            }
+        to {
+            background-color: var(--background-color);
+            color: var(--color);
+            }
+    }
+    .#{$theme-name} &
+    {
+        background-color: var( --background-color );
+        color: var( --color );
+
+        animation-name: anim-color-#{$theme-name};
+        animation-duration: 1s;
+    }
+
+    @each $prev-theme-name, $prev-theme in $themes {
+    .prev-#{$prev-theme-name}.#{$theme-name} &
+    {
+        --background-color-prev: #{map.get( $prev-theme, $background-color-name )};
+        --color-prev: #{map.get( $prev-theme, $color-name )};
+        --background-color: #{map.get( $theme, $background-color-name )};
+        --color: #{map.get( $theme, $color-name )};
+    } }
+} }
+
+
+@mixin dynamic-colors-with-box-shadow(
+    $background-color-name, $color-name, $shadow-color-name, $offset-y
+    ) {
+@each $theme-name, $theme in $themes
+{
+    @keyframes anim-shadow-#{$theme-name}
+    {
+        from {
+            background-color: var(--background-color-prev);
+            color: var(--color-prev);
+            box-shadow: inset 0 $offset-y var(--box-shadow-prev);
+            }
+        to {
+            background-color: var(--background-color);
+            color: var(--color);
+            box-shadow: inset 0 $offset-y var(--box-shadow);
+            }
+    }
+    .#{$theme-name} &
+    {
+        background-color: var( --background-color );
+        color: var( --color );
+        box-shadow: inset 0 $offset-y var(--box-shadow);
+
+        animation: anim-color-#{$theme-name} 1s, anim-shadow-#{$theme-name} 1s;
+    }
+
+    @each $prev-theme-name, $prev-theme in $themes {
+    .prev-#{$prev-theme-name}.#{$theme-name} &
+    {
+        --background-color-prev: #{map.get( $prev-theme, $background-color-name )};
+        --color-prev: #{map.get( $prev-theme, $color-name )};
+        --background-color: #{map.get( $theme, $background-color-name )};
+        --color: #{map.get( $theme, $color-name )};
+
+        --box-shadow-prev: #{map-get( $prev-theme, $shadow-color-name )};
+        --box-shadow: #{map-get( $theme, $shadow-color-name )};
+    } }
+} }
+
+
+@mixin color-variables() {
+@each $theme-name, $theme in $themes {
+.#{$theme-name}, .#{$theme-name} &
+{
+    $key: map-get( $theme, "key" ) !global;
+    $primary: map-get( $theme, "primary" ) !global;
+    $secondary: map-get( $theme, "secondary" ) !global;
+    $complementary: map-get( $theme, "complementary" ) !global;
+    @content;
+} } }

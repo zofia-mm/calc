@@ -1,13 +1,9 @@
-@use '/src/scss/colors.scss' as c;
+@use '/src/scss/themes.scss' as *;
 
-@include c.themed
-{
-    .attribution a {
-        color: c.$primary;
-        }
-}
 
-.main-container
-{
-    @include c.dynamic-colors( "background" );
-}
+.main-container {
+    @include dynamic-colors( "background", "on-background" );
+    }
+.attribution a {
+    @include dynamic-colors( "", "primary" );
+    }

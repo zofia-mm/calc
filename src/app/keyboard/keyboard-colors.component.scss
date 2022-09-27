@@ -1,50 +1,25 @@
-@use '/src/scss/colors.scss' as c;
+@use '/src/scss/themes.scss' as *;
 
-@include c.themed()
-{
-    .num-key
-    {
-        box-shadow: inset 0 -0.3rem c.$key-shadow;
-        &:hover {
-            background-color: lighten(c.$key, 10%);
-            box-shadow: inset 0 -0.3rem lighten($color: c.$key-shadow, $amount: 15%);
-            }
-    }
-    .del-key, .reset-key
-    {
-        box-shadow: inset 0 -0.3rem c.$secondary-shadow;
-        &:hover {
-            background-color: lighten(c.$secondary, 10%);
-            box-shadow: inset 0 -0.3rem lighten($color: c.$secondary-shadow, $amount: 15%);
-            }
-    }
-    .equals-key
-    {
-        box-shadow: inset 0 -0.3rem c.$primary-shadow;
-        &:hover {
-            background-color: lighten(c.$primary, 10%);
-            box-shadow: inset 0 -0.3rem lighten($color: c.$primary-shadow, $amount: 15%);
-            }
-    }
-
-    .num-key, .del-key, .reset-key, .equals-key
-    {
-        &:active {
-            padding-bottom: 0.3rem;
-            box-shadow: inset 0 0.3rem c.$complementary;
-            }
-    }
-}
 
 :host {
-    @include c.dynamic-colors( "complementary" );
+    @include dynamic-colors( "complementary", "on-complementary" );
     }
 .num-key {
-    @include c.dynamic-colors( "key" );
+    @include dynamic-colors( "key", "on-key" );
+    @include dynamic-colors-with-box-shadow( "key", "on-key", "key-shadow", -0.3rem );
     }
 .del-key, .reset-key {
-    @include c.dynamic-colors( "secondary" );
+    @include dynamic-colors( "secondary", "on-secondary" );
+    @include dynamic-colors-with-box-shadow( "secondary", "on-secondary", "secondary-shadow", -0.3rem );
     }
 .equals-key {
-    @include c.dynamic-colors( "primary" );
+    @include dynamic-colors-with-box-shadow( "primary", "on-primary", "primary-shadow", -0.3rem );
     }
+
+.num-key, .del-key, .reset-key, .equals-key
+{
+    &:active { @include color-variables {
+        padding-bottom: 0.3rem;
+        box-shadow: inset 0 0.3rem $complementary;
+        } }
+}
