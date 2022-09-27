@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ThemeController } from 'src/controllers/ThemeController';
 import { CalculationController } from 'src/controllers/CalculationController';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     selector: 'app-root',
@@ -12,6 +13,10 @@ import { CalculationController } from 'src/controllers/CalculationController';
     })
 export class AppComponent
 {
-    themeController : ThemeController = new ThemeController();
-    calculationController : CalculationController = new CalculationController();
+    calculationController : CalculationController = new CalculationController();    
+    themeController;
+    constructor( private cookieService: CookieService )
+    {
+        this.themeController = new ThemeController( cookieService );
+    }
 }
