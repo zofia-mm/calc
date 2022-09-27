@@ -188,28 +188,24 @@ class ScreenDisplay
     value = "0";
     setValueToString = ( newValue: string ) =>
     {
-        this.value = newValue;
+        this.value = (+newValue).toLocaleString( 'en-US', {maximumFractionDigits: 12} );
     }
     setValueToNumber = ( newValue: number ) =>
     {
         var prepared_number = "0";
-        if( newValue > Math.pow( 10, 10 ) )
-        {
-            prepared_number = newValue.toPrecision( 10 );
-        }
-        else
-        {
-            var preffered_precision = 0;
-            if( newValue % 1 == 0 ) preffered_precision = 0
-            else preffered_precision = String( newValue - Math.floor( newValue ) ).length;
+        if( newValue > Math.pow( 10, 10 ) ) {
+            this.value = newValue.toPrecision(10);
+            return;
+            }
 
-            console.log( newValue );
+        var preffered_precision = 0;
+        if( newValue % 1 == 0 ) preffered_precision = 0
+        else preffered_precision = String( newValue - Math.floor( newValue ) ).length;
 
-            preffered_precision -= String( Math.floor( newValue ) ).length;
-            prepared_number = newValue.toFixed( Math.min( Math.max( preffered_precision, 0 ), 10 ) );
-        }
-
-        this.value = prepared_number.toLocaleString();
+        preffered_precision -= String( Math.floor( newValue ) ).length;
+        prepared_number = newValue.toFixed( Math.min( Math.max( preffered_precision, 0 ), 10 ) );
+        
+        this.value = (+prepared_number).toLocaleString('en-US', {maximumFractionDigits: 12});
     }
 
     private showInput = ()=>{};
