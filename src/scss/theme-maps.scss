@@ -1,6 +1,8 @@
 
-/* themes map (with string names) at the bottom */
-
+///
+/// Color map for the default theme.
+/// @see $themes
+/// 
 $default:
 (
     "background": hsl(222, 26%, 31%),
@@ -21,6 +23,10 @@ $default:
         "on-key": hsl(221, 14%, 31%)
 );
 
+///
+/// Color map for the light theme.
+/// @see $themes
+/// 
 $light:
 (
     "background": hsl(0, 0%, 90%),
@@ -41,6 +47,10 @@ $light:
         "on-key": hsl(60, 10%, 19%)
 );
 
+///
+/// Color map for the dark theme.
+/// @see $themes
+/// 
 $dark:
 (
     "background": hsl(268, 75%, 9%),
@@ -61,6 +71,9 @@ $dark:
         "on-key": hsl(52, 100%, 62%)
 );
 
+///
+/// Map of themes and their names.
+/// 
 $themes:
 (
     "default": $default,

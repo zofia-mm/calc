@@ -3,7 +3,19 @@
 
 @use './theme-maps.scss' as *;
 
-
+/// 
+/// Theme dependent, animated background-color and color.
+///
+/// @example markup
+///     <div class="light"> // parent, theme container
+///         <button>
+///     <div>
+///
+/// @example scss
+///     button {
+///         @include dynamic-colors( "background", "on-background" );
+///         }
+///
 @mixin dynamic-colors( $background-color-name, $color-name ) {
 @each $theme-name, $theme in $themes
 {
@@ -37,7 +49,25 @@
     } }
 } }
 
-
+/// 
+/// Expanded version of dynamic colors, that includes
+/// an inset, vertically offset box shadow.
+/// 
+/// @example markup
+///     <div class="light"> // parent, theme container
+///         <button>
+///     <div>
+///
+/// @example scss
+///     button {
+///         @include dynamic-colors-with-box-shadow(
+///             "key", "on-key",
+///             "on-key-shadow", -0.3rem
+///             );
+///         }
+///
+/// @see {mixin} dynamic-colors
+///
 @mixin dynamic-colors-with-box-shadow(
     $background-color-name, $color-name, $shadow-color-name, $offset-y
     ) {
@@ -78,7 +108,20 @@
     } }
 } }
 
-
+///  
+/// Scope that exposes color variables.
+/// Depentand on parent class.
+/// 
+/// @example markup
+///     <div class="light"> // parent, theme container
+///         <button>
+///     <div>
+///
+/// @example scss
+///     button { @include color-variables {
+///         background-color: $color;
+///         } }
+///
 @mixin color-variables() {
 @each $theme-name, $theme in $themes {
 .#{$theme-name}, .#{$theme-name} &

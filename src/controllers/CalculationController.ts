@@ -6,8 +6,8 @@ export class CalculationController
     private numberInput = new NumberInput();
     private calculation = new Calculation();
     screenDisplay = new ScreenDisplay(
-        () => { this.screenDisplay.setValueTo( this.numberInput.getNumberValue() ); },
-        () => { this.screenDisplay.setValueTo( this.calculation.answer ); }
+        () => { this.screenDisplay.setValueToString( this.numberInput.getStringValue() ); },
+        () => { this.screenDisplay.setValueToNumber( this.calculation.answer ); }
         );
     
     // special input
@@ -148,7 +148,7 @@ class NumberInput
     append = ( num : number ) =>
     {
         // digit limit
-        if( this.fractionInput.length + this.integerInput.length > 10 ) { return; }
+        if( this.fractionInput.length + this.integerInput.length > 9 ) { return; }
 
         switch( this.inputType )
         {
@@ -186,7 +186,11 @@ enum Shown { Input, Answer }
 class ScreenDisplay
 {
     value = "0";
-    setValueTo = ( newValue: number ) =>
+    setValueToString = ( newValue: string ) =>
+    {
+        this.value = newValue;
+    }
+    setValueToNumber = ( newValue: number ) =>
     {
         var prepared_number = "0";
         if( newValue > Math.pow( 10, 10 ) )
@@ -263,7 +267,3 @@ class Calculation
             break; }
     } }
 }
-
-
-// not showing dots
-// max lenght is hardcoded
