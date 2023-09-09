@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Solution
 
-Live website: [here](https://fobya7.github.io/calc/)!
+Live website: [here](https://zofia-mm.github.io/calc/)!
 
 | Desktop |
 | :---: |
